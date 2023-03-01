@@ -6,9 +6,8 @@ import Row from 'react-bootstrap/Row';
 class Main extends React.Component {
 
   render (){
-    let beasts = [];
-    this.props.data.forEach((beast, idx) => {
-      beasts.push(
+    let beasts = this.props.data.map((beast, idx) =>{
+      return (
         <HornedBeast
           title={beast.title}
           imgUrl={beast.image_url}
@@ -16,9 +15,12 @@ class Main extends React.Component {
           key={idx}
           keyword={beast.keyword}
           horns={beast.horns}
+          addHearts={this.props.addHearts}
+          handleOpenModal={this.props.handleOpenModal}
         />
       )
-    })
+    });
+
     return (
       <main>
         <Container>
