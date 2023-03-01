@@ -7,7 +7,6 @@ class HornedBeast extends React.Component {
     super(props);
     this.state = {
       hearts: 0,
-      helpMe: false
     };
   }
 
@@ -17,28 +16,23 @@ handleFavs = () => {
   });
 }
 
-needsHelp = () =>{
-  this.setState({
-    helpMe:true
-  });
-}
-
-gotHelp = () =>{
-  this.setState({
-    helpMe: false
-  });
+handleImgClick = () => {
+  this.props.handleOpenModal(this.props.description, this.props.imgUrl);
 }
 
   render(){
     return(
       <Col>
-        <Card style={{width: '18rem'}}>
-          <h2>{this.props.title}</h2>
-          <p>{this.state.hearts} Favorites</p>
-          <p onClick={this.handleFavs}>❤️</p>
-          <img src={this.props.imgUrl} alt={this.props.description} title={this.props.title}></img>
-          <p>{this.props.description}</p>
-          <div>{this.state.helpMe ? 'I need help!' : ''}</div>
+        <Card style={{width: '18rem', height: '30rem'}}>
+            <h2>{this.props.title}</h2>
+            <p>{this.state.hearts} Favorites</p>
+            <p onClick={this.handleFavs}>❤️</p>
+            <img 
+              src={this.props.imgUrl} 
+              alt={this.props.description} 
+              title={this.props.title}
+              onClick={this.handleImgClick}></img>
+            <p>{this.props.description}</p>
         </Card>
       </Col>
     )
