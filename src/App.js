@@ -14,7 +14,7 @@ class App extends React.Component {
       hearts: '',
       isModalDisplaying: false,
       imgUrl: '',
-      description: ''
+      description: '',
     }
   }
 
@@ -46,17 +46,14 @@ class App extends React.Component {
           data={data} 
           addHearts={this.addHearts}
           handleOpenModal={this.handleOpenModal}/>
-        <Footer/>
-        {/* <Modal show={this.state.isModalDisplaying} onHide={this.handleCloseModal}>
-          <img src={this.state.beastImgUrl} alt=""></img>
-          <h2>{this.state.beastDescription}</h2>
-        </Modal> */}
         <SelectedBeast
           description={this.state.description}
           imgUrl={this.state.imgUrl}
           isModalDisplaying={this.state.isModalDisplaying}
           handleCloseModal={this.handleCloseModal}
         />
+        <Footer/>
+        
       </>
       );
   }
