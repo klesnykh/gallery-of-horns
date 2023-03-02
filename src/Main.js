@@ -2,11 +2,34 @@ import React from 'react';
 import HornedBeast from './HornedBeast';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import MyForm from './MyForm'
 
 class Main extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      formViewByHorns: '',
+      filteredData: this.props.data,
+      
+    }
+  }
+
+  handleFormSubmit = (hornNumber) => {
+    let newData = [];
+    if(hornNumber<4){
+      newData = (this.props.data.filter(beast => beast.horns===hornNumber));
+    }
+    else{
+      newData = (this.props.data.filter(beast => beast.horns>3));
+    }
+    this.setState({
+      filteredData: newData
+    })
+
+  }
 
   render (){
-    let beasts = this.props.data.map((beast, idx) =>{
+    let beasts = this.state.filteredData.map((beast, idx) =>{
       return (
         <HornedBeast
           title={beast.title}
@@ -23,6 +46,8 @@ class Main extends React.Component {
 
     return (
       <main>
+        <MyForm
+          handleFormSubmit={this.handleFormSubmit}/>
         <Container>
           <Row>
             {beasts}
