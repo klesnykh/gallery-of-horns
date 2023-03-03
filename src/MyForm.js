@@ -17,7 +17,8 @@ class MyForm extends React.Component {
 
   handleSubmit = (event) =>{
     event.preventDefault();
-    this.props.handleFormSubmit(parseInt(this.state.formViewByHorns));
+    console.log(this.state.formViewByHorns);
+    if(this.state.formViewByHorns > 0){this.props.handleFormSubmit(parseInt(this.state.formViewByHorns))};
   }
 
   render(){
@@ -29,6 +30,7 @@ class MyForm extends React.Component {
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">more than 3</option>
+            <option value="5">All Beasts</option>
           </Form.Select>
         </Form.Label>
         <Button type="submit">Filter</Button>

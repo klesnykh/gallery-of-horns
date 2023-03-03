@@ -19,8 +19,11 @@ class Main extends React.Component {
     if(hornNumber<4){
       newData = (this.props.data.filter(beast => beast.horns===hornNumber));
     }
-    else{
+    else if (hornNumber===4){
       newData = (this.props.data.filter(beast => beast.horns>3));
+    }
+    else{
+      newData = this.props.data;
     }
     this.setState({
       filteredData: newData
@@ -35,7 +38,7 @@ class Main extends React.Component {
           title={beast.title}
           imgUrl={beast.image_url}
           description={beast.description}
-          key={idx}
+          key={beast._id}
           keyword={beast.keyword}
           horns={beast.horns}
           addHearts={this.props.addHearts}
